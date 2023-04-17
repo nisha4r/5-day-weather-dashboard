@@ -66,16 +66,17 @@ function fiveDayForecast(lat, lon) {
             imageEl.appendTo(fiveDayForecastEl[i]);
 
             //temp
-            let tempEl = $("<p></p>").text();
-            tempEl.appendTo(fiveDayForecastEl[i]);
+            let forecastTempEl = $("<p></p>").text(" Temp: " + calcFahrenheit(data.list[index].main.temp));           
+            forecastTempEl.append("&#176;F");
+            forecastTempEl.appendTo(fiveDayForecastEl[i]);
 
             //wind
-            let windEl = $("<p></p>").text();
-            windEl.appendTo(fiveDayForecastEl[i]);
+            let forecastWindEl = $("<p></p>").text("");
+            forecastWindEl.appendTo(fiveDayForecastEl[i]);
 
             //humidity
-            let humidityEl = $("<p></p>").text();
-            humidityEl.appendTo(fiveDayForecastEl[i]);
+            let forecastHumidityEl = $("<p></p>").text("");
+            forecastHumidityEl.appendTo(fiveDayForecastEl[i]);
         }
     });
 }
