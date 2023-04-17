@@ -9,10 +9,26 @@ let humidityEl = $('#humidity');
 let DayHeaderEl = $('#5-day-header');
 let searchLocalStorage = localStorage.getItem("search-history");
 let searchHistoryEl = $('#search-history');
+const apiKey = "d5a2bbdd1d9a734f5dc0711353e26539"; // api key
+function getPresentWeather(cityName) {
+    let cityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    fetch(cityUrl).then(function (response) {
+        return response.json();
+
+    }).then(function (data) {
+
+        console.log(data);
 
 
 
-function load() {
-    console.log(cityEl);
+    });
 }
-load();
+
+
+function search() {
+    console.log(cityEl);
+    let cityName = cityEl.val();
+    console.log(cityName);
+    getPresentWeather(cityName);
+}
+
