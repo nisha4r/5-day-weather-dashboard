@@ -19,7 +19,7 @@ function getPresentWeather(cityName) {
 
     }).then(function (data) {
         presentEl.removeClass("d-none");
-        
+
         console.log("present: " + data);
         let presentDate = new Date(data.dt * 1000);
         let date = presentDate.getDate();
@@ -83,33 +83,42 @@ function fiveDayForecast(lat, lon) {
     });
 }
 
+function searchHistory() {
+    searchHistoryEl.text("");
+    for (let i = 0; i < searchLocalStorage.length; i++) {
 
+    }
+}
+
+
+// on load function
 function search() {
     console.log(cityEl);
     let cityName = cityEl.val();
     console.log(cityName);
-    if(cityName != undefined && cityName.length > 0){
+    if (cityName != undefined && cityName.length > 0) {
         getPresentWeather(cityName);
 
     }
-  
+
     // get search history from local storage
     searchButtonEl.bind("click", function () {
-        debugger;
+        
         let searchCity = cityEl.val();
-        if(searchCity != undefined && searchCity.length > 0){
+        if (searchCity != undefined && searchCity.length > 0) {
             getPresentWeather(searchCity);
-    
+
         }
-        if(searchCity != undefined && searchCity.length > 0){
+        if (searchCity != undefined && searchCity.length > 0) {
             searchLocalStorage.push(searchCity);
             console.log("Search history: " + JSON.stringify(searchLocalStorage));
             localStorage.setItem("search-history", JSON.stringify(searchLocalStorage));
         }
-        
+
     })
 }
 
+//Calculate C to F
 function calcFahrenheit(K) {
     return Math.floor((K - 273.15) * 1.8 + 32);
 }
