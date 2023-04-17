@@ -17,7 +17,7 @@ function getPresentWeather(cityName) {
 
     }).then(function (data) {
 
-        console.log(data);
+        console.log("present: "+data);
         let presentDate = new Date(data.dt * 1000);
         let date = presentDate.getDate();
         let month = presentDate.getMonth();
@@ -28,11 +28,26 @@ function getPresentWeather(cityName) {
         tempEl.text("Temp: " + calcFahrenheit(data.main.temp));
         tempEl.append("&#176;F");
         windSpeedEl.text("Wind: " + data.wind.speed + " MPH");
+        humidityEl.text("Humidity: " + data.main.humidity + "%");
+
+        //calling 5 day forecast and pass latitude , longitude in function.
+        fiveDayForecast(data.coord.lat, data.coord.lon);
 
 
 
 
+    });
+}
 
+function fiveDayForecast(lat, lon) {
+    let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+    fetch(forecastUrl).then(function (response) {
+        return response.json();
+
+    }).then(function (data) {
+        console.log("forecast: "+data);
+        let fiveDayForecastEl = $(".day-forecast");
+        console.log(fiveDayForecastEl.length);
     });
 }
 
