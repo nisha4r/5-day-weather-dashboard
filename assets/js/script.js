@@ -18,6 +18,12 @@ function getPresentWeather(cityName) {
     }).then(function (data) {
 
         console.log(data);
+        let presentDate = new Date(data.dt * 1000);
+        let date = presentDate.getDate();
+        let month = presentDate.getMonth();
+        let year = presentDate.getFullYear();
+        presentCityEl.text(data.name + " (" + month + "/" + date + "/" + year + ") ");
+
 
 
 
