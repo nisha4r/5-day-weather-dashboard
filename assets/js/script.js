@@ -52,8 +52,10 @@ function fiveDayForecast(lat, lon) {
         DayHeaderEl.removeClass("d-none");
         console.log("forecast: " + data);
         let fiveDayForecastEl = $(".day-forecast");
+        fiveDayForecastEl.empty();
         console.log(fiveDayForecastEl.length);
         for (let i = 0; i < fiveDayForecastEl.length; i++) {
+           
             let index = i * 8 + 5;
             console.log("day " + i + " :" + JSON.stringify(data.list[index]));
             let forecastDate = new Date(data.list[index].dt * 1000);

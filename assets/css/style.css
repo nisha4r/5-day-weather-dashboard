@@ -2,7 +2,7 @@ header {
     background-color: #3E4BA5;
 }
 
-.btn-primary {
+.btn-primary, .btn-secondary {
     min-width: 300px;
 }
 
