@@ -26,8 +26,8 @@ function getPresentWeather(cityName) {
         presentWeatherPicEl.attr("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
         presentWeatherPicEl.attr("alt", data.weather[0].description);
         tempEl.text("Temp: " + calcFahrenheit(data.main.temp));
-        tempEl.append(" &#176;F");
-        windSpeedEl.text();
+        tempEl.append("&#176;F");
+        windSpeedEl.text("Wind: " + data.wind.speed + " MPH");
 
 
 
