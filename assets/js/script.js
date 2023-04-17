@@ -7,7 +7,7 @@ let tempEl = $('#temp');
 let windSpeedEl = $('#wind-speed');
 let humidityEl = $('#humidity');
 let DayHeaderEl = $('#5-day-header');
-let searchLocalStorage = localStorage.getItem("search-history");
+let searchLocalStorage = JSON.parse(localStorage.getItem("search-history")) || [];
 let searchHistoryEl = $('#search-history');
 const apiKey = "d5a2bbdd1d9a734f5dc0711353e26539"; // api key
 
@@ -87,6 +87,15 @@ function search() {
     let cityName = cityEl.val();
     console.log(cityName);
     getPresentWeather(cityName);
+
+    // get search history from local storage
+    searchButtonEl.addEventListener("click", function () {
+        let searchCity = cityEl.value;
+        getCityWeather(searchCity);
+        searchLocalStorage.push(searchCity);
+        console.log("Search history: " + JSON.stringify(searchLocalStorage));
+        localStorage.setItem("search-history", JSON.stringify(searchLocalStorage));
+    })
 }
 
 function calcFahrenheit(K) {
