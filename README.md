@@ -38,7 +38,7 @@ The following image shows the web application's appearance and functionality:
 
 ## GIT
 
-* The URL of the functional, deployed application:
+* The URL of the functional, deployed application: https://nisha4r.github.io/5-day-weather-dashboard/
 
-* The URL of the GitHub repository: 
+* The URL of the GitHub repository: https://github.com/nisha4r/5-day-weather-dashboard
 
