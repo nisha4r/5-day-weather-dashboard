@@ -60,8 +60,10 @@ function fiveDayForecast(lat, lon) {
             let forecastYear = forecastDate.getFullYear();
             let forecastEl = $("<p></p>").text(forecastMonth + "/" + forecastDay + "/" + forecastYear).attr("class", "mt-3 mb-0 forecast-date");
             forecastEl.appendTo(fiveDayForecastEl[i]);
+            //image
+            let imageEl = $("<img></img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png").attr("alt", data.list[index].weather[0].description)
 
-
+            imageEl.appendTo(fiveDayForecastEl[i]);
         }
     });
 }
