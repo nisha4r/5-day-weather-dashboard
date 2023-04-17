@@ -2,7 +2,8 @@ header {
     background-color: #3E4BA5;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     min-width: 300px;
 }
 
@@ -17,4 +18,3 @@ header {
     justify-content: center;
     flex-grow: 1;
 }
-

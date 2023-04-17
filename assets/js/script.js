@@ -55,7 +55,7 @@ function fiveDayForecast(lat, lon) {
         fiveDayForecastEl.empty();
         console.log(fiveDayForecastEl.length);
         for (let i = 0; i < fiveDayForecastEl.length; i++) {
-           
+
             let index = i * 8 + 5;
             console.log("day " + i + " :" + JSON.stringify(data.list[index]));
             let forecastDate = new Date(data.list[index].dt * 1000);
@@ -88,11 +88,11 @@ function fiveDayForecast(lat, lon) {
 function searchHistory() {
     searchHistoryEl.text("");
     for (let i = 0; i < searchLocalStorage.length; i++) {
-        let div = $('<div></div>'); 
-        let inputLabel = $('<button> </button>'); 
+        let div = $('<div></div>');
+        let inputLabel = $('<button> </button>');
         inputLabel.text(searchLocalStorage[i]);
-        inputLabel.attr("type", "button");        
-        inputLabel.attr("class", "btn btn btn-secondary mt-1 mb-1 btn-lg");       
+        inputLabel.attr("type", "button");
+        inputLabel.attr("class", "btn btn btn-secondary mt-1 mb-1 btn-lg");
         inputLabel.bind("click", function () {
             getPresentWeather(searchLocalStorage[i]);
         })
@@ -113,7 +113,7 @@ function search() {
 
     // get search history from local storage
     searchButtonEl.bind("click", function () {
-        
+
         let searchCity = cityEl.val();
         if (searchCity != undefined && searchCity.length > 0) {
             getPresentWeather(searchCity);
@@ -124,7 +124,7 @@ function search() {
             console.log("Search history: " + JSON.stringify(searchLocalStorage));
             localStorage.setItem("search-history", JSON.stringify(searchLocalStorage));
         }
-
+        searchHistory();
     })
 
     searchHistory();
