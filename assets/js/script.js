@@ -58,12 +58,24 @@ function fiveDayForecast(lat, lon) {
             let forecastDay = forecastDate.getDate();
             let forecastMonth = forecastDate.getMonth();
             let forecastYear = forecastDate.getFullYear();
+            //date
             let forecastEl = $("<p></p>").text(forecastMonth + "/" + forecastDay + "/" + forecastYear).attr("class", "mt-3 mb-0 forecast-date");
             forecastEl.appendTo(fiveDayForecastEl[i]);
             //image
-            let imageEl = $("<img></img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png").attr("alt", data.list[index].weather[0].description)
-
+            let imageEl = $("<img></img>").attr("src", "https://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png").attr("alt", data.list[index].weather[0].description);
             imageEl.appendTo(fiveDayForecastEl[i]);
+
+            //temp
+            let tempEl = $("<p></p>").text();
+            tempEl.appendTo(fiveDayForecastEl[i]);
+
+            //wind
+            let windEl = $("<p></p>").text();
+            windEl.appendTo(fiveDayForecastEl[i]);
+
+            //humidity
+            let humidityEl = $("<p></p>").text();
+            humidityEl.appendTo(fiveDayForecastEl[i]);
         }
     });
 }
