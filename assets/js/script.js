@@ -48,6 +48,10 @@ function fiveDayForecast(lat, lon) {
         console.log("forecast: "+data);
         let fiveDayForecastEl = $(".day-forecast");
         console.log(fiveDayForecastEl.length);
+        for(let i=0; i< fiveDayForecastEl.length; i++){
+            let index = i * 8 + 4;
+            console.log("day "+i +" :"+ JSON.stringify(data.list[index]));
+        }
     });
 }
 
