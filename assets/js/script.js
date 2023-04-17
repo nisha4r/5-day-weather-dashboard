@@ -23,6 +23,12 @@ function getPresentWeather(cityName) {
         let month = presentDate.getMonth();
         let year = presentDate.getFullYear();
         presentCityEl.text(data.name + " (" + month + "/" + date + "/" + year + ") ");
+        presentWeatherPicEl.attr("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
+        presentWeatherPicEl.attr("alt", data.weather[0].description);
+        tempEl.text("Temp: " + calcFahrenheit(data.main.temp));
+        tempEl.append(" &#176;F");
+        windSpeedEl.text();
+
 
 
 
@@ -36,5 +42,9 @@ function search() {
     let cityName = cityEl.val();
     console.log(cityName);
     getPresentWeather(cityName);
+}
+
+function calcFahrenheit(K) {
+    return Math.floor((K - 273.15) * 1.8 + 32);
 }
 
