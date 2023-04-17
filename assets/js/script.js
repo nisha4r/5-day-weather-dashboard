@@ -1,3 +1,4 @@
+let presentEl = $('#present');
 let cityEl = $('#city-input');
 let searchButtonEl = $('#search-button');
 let presentCityEl = $('#present-city');
@@ -6,6 +7,7 @@ let tempEl = $('#temp');
 let windSpeedEl = $('#wind-speed');
 let humidityEl = $('#humidity');
 let DayHeaderEl = $('#5-day-header');
+let searchLocalStorage = localStorage.getItem("search-history");
 let searchHistoryEl = $('#search-history');
 
 
