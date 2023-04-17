@@ -10,6 +10,8 @@ let DayHeaderEl = $('#5-day-header');
 let searchLocalStorage = localStorage.getItem("search-history");
 let searchHistoryEl = $('#search-history');
 const apiKey = "d5a2bbdd1d9a734f5dc0711353e26539"; // api key
+
+//With city name , get weather details from api
 function getPresentWeather(cityName) {
     let cityUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
     fetch(cityUrl).then(function (response) {
@@ -17,7 +19,7 @@ function getPresentWeather(cityName) {
 
     }).then(function (data) {
 
-        console.log("present: "+data);
+        console.log("present: " + data);
         let presentDate = new Date(data.dt * 1000);
         let date = presentDate.getDate();
         let month = presentDate.getMonth();
@@ -39,18 +41,27 @@ function getPresentWeather(cityName) {
     });
 }
 
+//Five day forecast based on latitude and longitude
 function fiveDayForecast(lat, lon) {
     let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
     fetch(forecastUrl).then(function (response) {
         return response.json();
 
     }).then(function (data) {
-        console.log("forecast: "+data);
+        console.log("forecast: " + data);
         let fiveDayForecastEl = $(".day-forecast");
         console.log(fiveDayForecastEl.length);
-        for(let i=0; i< fiveDayForecastEl.length; i++){
-            let index = i * 8 + 4;
-            console.log("day "+i +" :"+ JSON.stringify(data.list[index]));
+        for (let i = 0; i < fiveDayForecastEl.length; i++) {
+            let index = i * 8 + 5;
+            console.log("day " + i + " :" + JSON.stringify(data.list[index]));
+            let forecastDate = new Date(data.list[index].dt * 1000);
+            let forecastDay = forecastDate.getDate();
+            let forecastMonth = forecastDate.getMonth();
+            let forecastYear = forecastDate.getFullYear();
+            let forecastEl = $("<p></p>").text(forecastMonth + "/" + forecastDay + "/" + forecastYear).attr("class", "mt-3 mb-0 forecast-date");
+            forecastEl.appendTo(fiveDayForecastEl[i]);
+
+
         }
     });
 }
