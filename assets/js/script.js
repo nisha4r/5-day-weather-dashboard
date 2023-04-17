@@ -86,7 +86,15 @@ function fiveDayForecast(lat, lon) {
 function searchHistory() {
     searchHistoryEl.text("");
     for (let i = 0; i < searchLocalStorage.length; i++) {
-
+        let div = $('<div></div>'); 
+        let inputLabel = $('<button> </button>'); 
+        inputLabel.text(searchLocalStorage[i]);
+        inputLabel.attr("type", "button");        
+        inputLabel.attr("class", "btn btn btn-secondary mt-1 mb-1 btn-lg");       
+        inputLabel.bind("click", function () {
+            getPresentWeather(searchLocalStorage[i]);
+        })
+        searchHistoryEl.append(div).append(inputLabel);
     }
 }
 
@@ -116,6 +124,8 @@ function search() {
         }
 
     })
+
+    searchHistory();
 }
 
 //Calculate C to F
